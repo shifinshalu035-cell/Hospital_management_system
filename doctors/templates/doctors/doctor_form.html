@@ -3,11 +3,16 @@
 {% block title %}Doctor Form{% endblock %}
 
 {% block content %}
-    <h1>Doctor Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'doctor_list' %}">Back to list</a>
+    <h1 class="mb-3">Doctor Form</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="{% url 'doctor_list' %}" class="btn btn-outline-secondary">Back to list</a>
+            </form>
+        </div>
+    </div>
 {% endblock %}

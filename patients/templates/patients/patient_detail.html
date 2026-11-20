@@ -3,12 +3,18 @@
 {% block title %}{{ patient.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ patient.name }}</h1>
-    <p>Age: {{ patient.age }}</p>
-    <p>Gender: {{ patient.gender }}</p>
-    <p>Phone: {{ patient.phone }}</p>
-    <p>Address: {{ patient.address }}</p>
-    <a href="{% url 'patient_edit' patient.id %}">Edit</a> |
-    <a href="{% url 'patient_delete' patient.id %}">Delete</a> |
-    <a href="{% url 'patient_list' %}">Back to list</a>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="h3">{{ patient.name }}</h1>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item"><strong>Age:</strong> {{ patient.age }}</li>
+                <li class="list-group-item"><strong>Gender:</strong> {{ patient.gender }}</li>
+                <li class="list-group-item"><strong>Phone:</strong> {{ patient.phone }}</li>
+                <li class="list-group-item"><strong>Address:</strong> {{ patient.address }}</li>
+            </ul>
+            <a href="{% url 'patient_edit' patient.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'patient_delete' patient.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'patient_list' %}" class="btn btn-outline-secondary">Back to list</a>
+        </div>
+    </div>
 {% endblock %}
