@@ -6,7 +6,7 @@
     <h1>Delete appointment for {{ appointment.patient.name }}?</h1>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
+        <button type="submit" class="btn btn-success">Yes, delete</button>
     </form>
     <a href="{% url 'appointment_list' %}">Cancel</a>
 {% endblock %}
