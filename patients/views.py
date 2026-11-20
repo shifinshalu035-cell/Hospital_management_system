@@ -2,10 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Patient
 from .forms import PatientForm
 
-# 1. List all patients
+# 1. List all patients (with search)
 def patient_list(request):
-    patients = Patient.objects.all()
-    return render(request, 'patients/patient_list.html', {'patients': patients})
+    query = request.GET.get('q', '')
+    if query:
+        patients = Patient.objects.filter(name__icontains=query)
+    else:
+        patients = Patient.objects.all()
+    return render(request, 'patients/patient_list.html', {'patients': patients, 'query': query})
 
 # 2. Show one patient
 def patient_detail(request, id):

@@ -4,6 +4,11 @@
 
 {% block content %}
     <h1>Patient List</h1>
+    <form method="get">
+    <input type="text" name="q" placeholder="Search patient by name" value="{{ query }}">
+    <button type="submit">Search</button>
+    <a href="{% url 'patient_list' %}">Clear</a>
+    </form>
     <a href="{% url 'patient_add' %}">+ Add Patient</a>
     <table border="1">
         <tr>
