@@ -3,29 +3,44 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Hospital Management System</h1>
-    <p>Welcome. Manage patients, doctors, and appointments from one place.</p>
+    <h1 class="mb-1">Hospital Management System</h1>
+    <p class="text-muted">Welcome. Manage patients, doctors, and appointments from one place.</p>
 
-    <div class="cards">
-        <div class="card">
-            <h2>Patients: {{ patient_count }}</h2>
-            <p>Register new patients and view their records.</p>
-            <a href="{% url 'patient_list' %}">View patients</a> |
-            <a href="{% url 'patient_add' %}">Add patient</a>
+    <div class="row g-3 mt-2">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Patients</h5>
+                    <p class="display-6">{{ patient_count }}</p>
+                    <p class="text-muted">Register new patients and view their records.</p>
+                    <a href="{% url 'patient_list' %}" class="btn btn-outline-primary btn-sm">View</a>
+                    <a href="{% url 'patient_add' %}" class="btn btn-primary btn-sm">Add</a>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>Doctors: {{ doctor_count }}</h2>
-            <p>Manage doctors and their specializations.</p>
-            <a href="{% url 'doctor_list' %}">View doctors</a> |
-            <a href="{% url 'doctor_add' %}">Add doctor</a>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Doctors</h5>
+                    <p class="display-6">{{ doctor_count }}</p>
+                    <p class="text-muted">Manage doctors and their specializations.</p>
+                    <a href="{% url 'doctor_list' %}" class="btn btn-outline-primary btn-sm">View</a>
+                    <a href="{% url 'doctor_add' %}" class="btn btn-primary btn-sm">Add</a>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>Appointments: {{ appointment_count }}</h2>
-            <p>{{ scheduled_count }} scheduled.</p>
-            <a href="{% url 'appointment_list' %}">View appointments</a> |
-            <a href="{% url 'appointment_add' %}">Book appointment</a>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Appointments</h5>
+                    <p class="display-6">{{ appointment_count }}</p>
+                    <p class="text-muted">{{ scheduled_count }} scheduled.</p>
+                    <a href="{% url 'appointment_list' %}" class="btn btn-outline-primary btn-sm">View</a>
+                    <a href="{% url 'appointment_add' %}" class="btn btn-primary btn-sm">Book</a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
