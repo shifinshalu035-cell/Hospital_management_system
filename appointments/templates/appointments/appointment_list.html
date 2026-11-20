@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Appointments</title></head>
+<body>
+    <h1>Appointment List</h1>
+    <a href="{% url 'appointment_add' %}">+ Book Appointment</a>
+    <table border="1">
+        <tr>
+            <th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th><th>Actions</th>
+        </tr>
+        {% for a in appointments %}
+        <tr>
+            <td>{{ a.patient.name }}</td>
+            <td>{{ a.doctor.name }}</td>
+            <td>{{ a.date }}</td>
+            <td>{{ a.time }}</td>
+            <td>{{ a.status }}</td>
+            <td>
+                <a href="{% url 'appointment_edit' a.id %}">Edit</a> |
+                <a href="{% url 'appointment_delete' a.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
