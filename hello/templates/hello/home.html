@@ -8,22 +8,22 @@
 
     <div class="cards">
         <div class="card">
-            <h2>Patients</h2>
+            <h2>Patients: {{ patient_count }}</h2>
             <p>Register new patients and view their records.</p>
             <a href="{% url 'patient_list' %}">View patients</a> |
             <a href="{% url 'patient_add' %}">Add patient</a>
         </div>
 
         <div class="card">
-            <h2>Doctors</h2>
+            <h2>Doctors: {{ doctor_count }}</h2>
             <p>Manage doctors and their specializations.</p>
             <a href="{% url 'doctor_list' %}">View doctors</a> |
             <a href="{% url 'doctor_add' %}">Add doctor</a>
         </div>
 
         <div class="card">
-            <h2>Appointments</h2>
-            <p>Book and track patient appointments.</p>
+            <h2>Appointments: {{ appointment_count }}</h2>
+            <p>{{ scheduled_count }} scheduled.</p>
             <a href="{% url 'appointment_list' %}">View appointments</a> |
             <a href="{% url 'appointment_add' %}">Book appointment</a>
         </div>
