@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Doctor
 from .forms import DoctorForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def doctor_list(request):
     doctors = Doctor.objects.all()
     return render(request, 'doctors/doctor_list.html', {'doctors': doctors})
-
+@login_required
 def doctor_add(request):
     if request.method == 'POST':
         form = DoctorForm(request.POST)
@@ -15,7 +17,7 @@ def doctor_add(request):
     else:
         form = DoctorForm()
     return render(request, 'doctors/doctor_form.html', {'form': form})
-
+@login_required
 def doctor_edit(request, id):
     doctor = get_object_or_404(Doctor, id=id)
     if request.method == 'POST':
@@ -26,7 +28,7 @@ def doctor_edit(request, id):
     else:
         form = DoctorForm(instance=doctor)
     return render(request, 'doctors/doctor_form.html', {'form': form})
-
+@login_required
 def doctor_delete(request, id):
     doctor = get_object_or_404(Doctor, id=id)
     if request.method == 'POST':

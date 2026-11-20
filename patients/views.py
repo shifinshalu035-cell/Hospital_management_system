@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Patient
 from .forms import PatientForm
+from django.contrib.auth.decorators import login_required
 
 # 1. List all patients (with search)
+@login_required
 def patient_list(request):
     query = request.GET.get('q', '')
     if query:
@@ -12,11 +14,13 @@ def patient_list(request):
     return render(request, 'patients/patient_list.html', {'patients': patients, 'query': query})
 
 # 2. Show one patient
+@login_required
 def patient_detail(request, id):
     patient = get_object_or_404(Patient, id=id)
     return render(request, 'patients/patient_detail.html', {'patient': patient})
 
 # 3. Add a new patient
+@login_required
 def patient_add(request):
     if request.method == 'POST':
         form = PatientForm(request.POST)
@@ -28,6 +32,7 @@ def patient_add(request):
     return render(request, 'patients/patient_form.html', {'form': form})
 
 # 4. Edit a patient
+@login_required
 def patient_edit(request, id):
     patient = get_object_or_404(Patient, id=id)
     if request.method == 'POST':
@@ -40,6 +45,7 @@ def patient_edit(request, id):
     return render(request, 'patients/patient_form.html', {'form': form})
 
 # 5. Delete a patient
+@login_required
 def patient_delete(request, id):
     patient = get_object_or_404(Patient, id=id)
     if request.method == 'POST':
