@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}HMS{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="{% url 'patient_list' %}">Patients</a> |
+        <a href="{% url 'doctor_list' %}">Doctors</a> |
+        <a href="{% url 'appointment_list' %}">Appointments</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

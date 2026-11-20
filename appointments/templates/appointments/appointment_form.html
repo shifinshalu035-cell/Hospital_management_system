@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head><title>Appointment Form</title></head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Appointment Form{% endblock %}
+
+{% block content %}
     <h1>Appointment Form</h1>
     <form method="post">
         {% csrf_token %}
@@ -9,5 +10,4 @@
         <button type="submit">Save</button>
     </form>
     <a href="{% url 'appointment_list' %}">Back to list</a>
-</body>
-</html>
+{% endblock %}

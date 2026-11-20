@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head><title>Delete Doctor</title></head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Delete Doctor{% endblock %}
+
+{% block content %}
     <h1>Delete {{ doctor.name }}?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Yes, delete</button>
     </form>
     <a href="{% url 'doctor_list' %}">Cancel</a>
-</body>
-</html>
+{% endblock %}
