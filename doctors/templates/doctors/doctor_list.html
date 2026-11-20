@@ -4,6 +4,16 @@
 
 {% block content %}
     <h1 class="mb-3">Doctor List</h1>
+    <form method="get" class="row g-2 mb-3">
+    <div class="col-md-6">
+        <input type="text" name="q" class="form-control"
+               placeholder="Search by name or specialization" value="{{ query }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="{% url 'doctor_list' %}" class="btn btn-outline-secondary">Clear</a>
+    </div>
+</form>
 
     <a href="{% url 'doctor_add' %}" class="btn btn-success mb-3">+ Add Doctor</a>
 

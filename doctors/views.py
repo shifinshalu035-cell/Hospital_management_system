@@ -5,8 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def doctor_list(request):
-    doctors = Doctor.objects.all()
-    return render(request, 'doctors/doctor_list.html', {'doctors': doctors})
+    query = request.GET.get('q', '')
+    if query:
+        doctors = Doctor.objects.filter(name__icontains=query) | Doctor.objects.filter(specialization__icontains=query)
+    else:
+        doctors = Doctor.objects.all()
+    return render(request, 'doctors/doctor_list.html', {'doctors': doctors, 'query': query})
 @login_required
 def doctor_add(request):
     if request.method == 'POST':
