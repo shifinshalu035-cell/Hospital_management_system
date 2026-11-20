@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>
-         Home page
-    </h1>
+{% extends 'base.html' %}
 
-    <p>
-        there is you can see the home page int his 
-        
-    </p>
-    
-</body>
-</html>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Hospital Management System</h1>
+    <p>Welcome. Manage patients, doctors, and appointments from one place.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2>Patients</h2>
+            <p>Register new patients and view their records.</p>
+            <a href="{% url 'patient_list' %}">View patients</a> |
+            <a href="{% url 'patient_add' %}">Add patient</a>
+        </div>
+
+        <div class="card">
+            <h2>Doctors</h2>
+            <p>Manage doctors and their specializations.</p>
+            <a href="{% url 'doctor_list' %}">View doctors</a> |
+            <a href="{% url 'doctor_add' %}">Add doctor</a>
+        </div>
+
+        <div class="card">
+            <h2>Appointments</h2>
+            <p>Book and track patient appointments.</p>
+            <a href="{% url 'appointment_list' %}">View appointments</a> |
+            <a href="{% url 'appointment_add' %}">Book appointment</a>
+        </div>
+    </div>
+{% endblock %}
